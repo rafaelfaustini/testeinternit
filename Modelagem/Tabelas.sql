@@ -16,7 +16,7 @@ create table noticia(
   destaque boolean
 );
 
-create table imagens(
+create table imagem(
   id int Primary Key AUTO_INCREMENT,
   noticiaID int,
   FOREIGN KEY (noticiaID) REFERENCES noticia(id),
