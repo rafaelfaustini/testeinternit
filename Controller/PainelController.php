@@ -42,10 +42,9 @@ private function listarImagens($id){
 
   public function visualizarDestaques(){
     $lista = $this->listarDestaques();
-
+    if(sizeof($lista) != 0){
     foreach ($lista as $noticia){
-    echo "
-<div class='card' style='width: 18rem;'>";
+    echo "<div class='card' style='width: 18rem;'>";
 
   $imagens = $this->listarImagens($noticia->id);
 
@@ -95,6 +94,9 @@ echo "
     ";
   }
   echo "<button class='btn btn-secondary'>Veja mais notícias</button>";
+} else {
+  echo ""
+}
   }
 
   private function listarNoticias(){
