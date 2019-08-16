@@ -12,14 +12,15 @@ class AssinanteController
   }
 
   public function adicionar($assinante){
-    $query = $this->banco-prepare(
-      "INSERT INTO assinante (cpf, nome, email, endereco, cidade, uf)
-      VALUES (:cpf, :nome, :email, :endereco, :cidade, :uf);" );
+    $query = $this->banco->prepare(
+      "INSERT INTO assinante (cpf, permissao, nome, email,senha, endereco, cidade, uf)
+      VALUES (:cpf, 0, :nome, :email, :senha, :endereco, :cidade, :uf);" );
 
       $query->execute(array(
         ':cpf' => $assinante->cpf,
         ':nome' => $assinante->nome,
         ':email' => $assinante->email,
+        ':senha' => $assinante->senha,
         ':endereco' => $assinante->endereco,
         ':cidade' => $assinante->cidade,
         ':uf' => $assinante->uf

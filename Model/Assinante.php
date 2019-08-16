@@ -1,7 +1,7 @@
 <?php
 class Assinante{
   private $cpf;
-  private $permissao;
+  private $permissao= 0;
   private $nome;
   private $email;
   private $senha;

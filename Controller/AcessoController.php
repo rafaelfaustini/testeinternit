@@ -25,11 +25,11 @@ private function verificarAssinante($email,$senha){
       $_SESSION["assinante"]=$assinante;
       if(!$assinante->permissao){
         // Usuário normal
-        header('Location: painel/painel.php');
+        header('Location: painel/');
         die();
       } else if($assinante->permissao == 1){
         // Admin
-        header("Location: painel/");
+        header("Location: painel/admin.php");
         die();
       }
     } else{

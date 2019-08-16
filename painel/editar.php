@@ -44,8 +44,14 @@ if ($c->isLogado($dados)){
 
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['fromPerson'])){
       $controllerAssinante = new AssinanteController();
-
-      $assinanteNovo = $controllerAssinante->get($id);
+      private $permissao;
+      private $nome;
+      private $email;
+      private $senha;
+      private $endereco;
+      private $cidade;
+      private $uf;
+      $assinanteNovo = new Assinante($id,isset($_POST['permissao']),isset($_POST['nome']), isset($_POST['email']), isset($_POST['telefone']));
 
       $controllerAssinante->editar($assinanteNovo);
     }
@@ -57,7 +63,7 @@ if ($c->isLogado($dados)){
 
       private $resumo;
       private $destaque;
-      $noticiaNovo = new Noticia($_POST[""]);
+      $noticiaNovo = new Noticia($id,date_default_timezone_get(),$_POST["resumo"], $POST_["destaque"]);
 
       $controllerNoticia->editar($noticiaNovo);
 }

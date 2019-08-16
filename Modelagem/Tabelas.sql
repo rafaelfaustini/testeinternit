@@ -11,8 +11,10 @@ create table assinante(
 
 create table noticia(
   id int Primary Key AUTO_INCREMENT,
+  titulo varchar(200),
   data int NOT NULL,
-  resumo text,
+  resumo varchar(255),
+  conteudo text,
   destaque boolean
 );
 

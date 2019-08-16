@@ -1,4 +1,8 @@
-<?php include 'modulos/exec_registro.php'; ?>
+<?php
+ require_once "Controller/RegistroController.php";
+ $controller = new RegistroController();
+ $controller->registrar();
+?>
 
 <!doctype html>
 <html lang="en">
@@ -40,6 +44,28 @@
          <label for="email">Email</label>
        </div>
        <div class="md-form form-lg">
+         <i class="fa fa-address-card prefix"></i>
+         <input type="text" id="cpf" name="cpf" class="form-control form-control-lg" >
+         <label for="cpf">Cpf</label>
+       </div>
+       <div class="md-form form-lg">
+         <i class="fa fa-map-marker-alt prefix"></i>
+         <input type="text" id="end" name="end" class="form-control form-control-lg" >
+         <label for="end">Endereço</label>
+       </div>
+       <div class="md-form form-lg">
+         <i class="fa fa-building prefix"></i>
+         <input type="text" id="cidade" name="cidade" class="form-control form-control-lg" >
+         <label for="cidade">Cidade</label>
+       </div>
+       <div class="md-form form-lg">
+         <i class="fa fa-map  prefix"></i>
+         <input type="text" id="uf" name="uf" class="form-control form-control-lg" >
+         <label for="uf">Uf</label>
+       </div>
+
+
+       <div class="md-form form-lg">
          <i class="fa fa-lock prefix"></i>
          <input type="password" id="senha" name="senha"  class="form-control form-control-lg" pattern=".{10,30}" required title="de 10 a 30 caracteres">
          <label for="senha">Senha</label>
@@ -54,14 +80,10 @@
        </div>
      </div>
      <div class="modal-footer mx-5 pt-3 mb-1">
-     <p class="font-small grey-text d-flex justify-content-end">Já é membro? <a href="login.php" class="blue-text ml-1">Logue-se</a></p>
+     <p class="font-small grey-text d-flex justify-content-end">Já é membro? <a href="acesso.php" class="blue-text ml-1">Logue-se</a></p>
  </div>
  </div>
      </form>
-   </div>
-   <div class="form-group ">
-    <div class="g-recaptcha" data-sitekey="6LcVzVYUAAAAANKu6D01viIsjC6Zl51aDz-vqkQ-
-   " data-bind="btnregistrar" data-callback="submitForm"></div>
    </div>
  </div>
 
