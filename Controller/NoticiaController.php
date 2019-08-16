@@ -1,4 +1,5 @@
 <?php
+require __DIR__ . '/../Model/Noticia.php';
 class NoticiaController
 {
   private $conexao;
@@ -54,7 +55,7 @@ class NoticiaController
       while ($registro = $query->fetch()){
         $noticia = new Noticia($registro['id'], $registro['data'],
         $registro['resumo'], $registro['destaque']);
-        array_push($lista, $assinante);
+        array_push($lista, $noticia);
       }
       return $lista;
     }

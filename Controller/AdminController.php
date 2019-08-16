@@ -4,16 +4,6 @@ require 'AssinanteController.php';
 
 class AdminController{
 
-public function acoes(){
-  if (isset($_POST['textfield'])) {
-    echo username();
-    return;
-}
-if (isset($_POST['textfield'])) {
-    echo username();
-    return;
-}
-}
 
 public function isLogado($dados){
   if(!empty($dados)){

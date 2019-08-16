@@ -12,10 +12,10 @@ class ImagemController
   public function adicionar($Imagem){
     $query = $this->banco-prepare(
       "INSERT INTO Imagem (noticiaID, caminho)
-      VALUES (:data, :caminho);" );
+      VALUES (:noticiaid, :caminho);" );
 
       $query->execute(array(
-        ':data' => $Imagem->noticia->id,
+        ':boticiaid' => $Imagem->noticia->id,
         ':caminho' => $Imagem->caminho
       ));
     }
@@ -23,14 +23,14 @@ class ImagemController
     public function editar($Imagem){
       $query = $this->banco->prepare(
         "UPDATE Imagem
-        SET data = :data, caminho= :caminho
+        SET noticia = :noticia, caminho= :caminho
         WHERE id = :id"
       );
 
       $query->execute(array(
         ':id' => $Imagem->id,
-        ':data' => $Imagem->data,
-        ':caminho' => $Imagem->resumo
+        ':noticia' => $Imagem->noticia,
+        ':caminho' => $Imagem->caminho
       ));
     }
 
@@ -44,7 +44,7 @@ class ImagemController
       ));
     }
 
-    public function listar($noticia){
+    public function listar($Imagem){
       $query = $this->banco->prepare("SELECT * FROM Imagem WHERE noticiaID=:id");
 
       $query->execute(array(
@@ -52,10 +52,10 @@ class ImagemController
       ));
 
       $lista = array();
-      while ($registro = $query->fetch()){$id, $data, $resumo, $destaque
-        $Imagem = new Imagem($registro['id'], $registro['data'],
-        $registro['resumo'], $registro['destaque']);
-        array_push($lista, $assinante);
+      while ($registro = $query->fetch()){$id, $noticia, $caminho
+        $Imagem = new Imagem($registro['id'], $registro['noticia'],
+        $registro['caminho']);
+        array_push($lista, $Imagem);
       }
       return $lista;
     }

@@ -29,7 +29,7 @@ private function verificarAssinante($email,$senha){
         die();
       } else if($assinante->permissao == 1){
         // Admin
-        header("Location: painel/admin.php");
+        header("Location: painel/");
         die();
       }
     } else{
