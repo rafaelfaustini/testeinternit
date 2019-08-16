@@ -1,6 +1,6 @@
 <?php
-require 'NoticiaController.php';
-require 'AssinanteController.php';
+require_once 'NoticiaController.php';
+require_once 'AssinanteController.php';
 
 class AdminController{
 
@@ -38,7 +38,7 @@ public function getAssinantes($dados){
           <td>$assinante->cidade</td>
           <td>$assinante->uf</td>
 
-<td><a href='editar.php?nome=assinante&id=$assinante->cpf'  class='text-warning'>
+<td><a href='editarAssinante.php?id=$assinante->cpf'  class='text-warning'>
  <i class='warning-text fa fa-lg fa-edit' data-toggle='tooltip' data-placement='top' title='Editar Assinante'></i
    ></a></td>
 

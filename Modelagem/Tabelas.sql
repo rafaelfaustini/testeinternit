@@ -1,5 +1,5 @@
 create table assinante(
-  cpf varchar(14) Primary Key,
+  cpf varchar(11) Primary Key,
   permissao int,
   nome varchar(100),
   email varchar(100),

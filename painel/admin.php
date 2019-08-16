@@ -10,7 +10,7 @@ require __DIR__ . '/../Controller/AdminController.php';
 
 
  ?>
-
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">

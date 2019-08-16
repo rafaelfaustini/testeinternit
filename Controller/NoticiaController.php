@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../Model/Noticia.php';
+require_once __DIR__ . '/../Model/Noticia.php';
 class NoticiaController
 {
   private $conexao;

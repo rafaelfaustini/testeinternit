@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/../Model/Conexao.php';
+require_once __DIR__ . '/../Model/Conexao.php';
 require_once __DIR__ . '/../Model/Assinante.php';
 class AssinanteController
 {
@@ -33,8 +33,8 @@ class AssinanteController
     public function editar($assinante){
       $query = $this->banco->prepare(
         "UPDATE assinante
-        SET permissao = :permissao, nome= :nome, email= :email
-        senha = :senha, endereco = :endereco, cidade= :cidade,
+        SET permissao = :permissao, nome= :nome, email= :email,
+        endereco = :endereco, cidade= :cidade,
         uf= :uf
         WHERE cpf = :cpf"
       );
@@ -44,7 +44,6 @@ class AssinanteController
         ':permissao' => $assinante->permissao,
         ':nome' => $assinante->nome,
         ':email' => $assinante->email,
-        ':senha' => $assinante->senha,
         ':endereco' => $assinante->endereco,
         ':cidade' => $assinante->cidade,
         ':uf' => $assinante->uf

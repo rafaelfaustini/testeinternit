@@ -95,7 +95,7 @@ echo "
   }
   echo "<button class='btn btn-secondary'>Veja mais notícias</button>";
 } else {
-  echo ""
+  echo "<p class='text-center m-5'>Não há notícias disponíveis no momento</p>";
 }
   }
 

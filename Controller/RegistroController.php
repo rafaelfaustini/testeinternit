@@ -1,6 +1,5 @@
 <?php
 require_once "AssinanteController.php";
-require_once __DIR__ . '/../Model/Conexao.php';
 require_once __DIR__ . '/../Model/Assinante.php';
 class RegistroController{
 
