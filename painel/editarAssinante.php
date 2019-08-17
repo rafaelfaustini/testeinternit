@@ -30,6 +30,7 @@ if ($adm->isLogado($_SESSION["assinante"]) ){
         <div class="card-body text-muted m-3">
           <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="col-12" id="formulario">
             <div class="form-group">
+              <a class="fas fa-arrow-left" href="admin.php"></a>
             </div>
             <div class="form-group mb-5">
               <p class="h4 text-center py-4">Editar assinante <?=$assinante->nome ?></h3>

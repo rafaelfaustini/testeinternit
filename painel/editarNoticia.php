@@ -4,7 +4,7 @@ require_once __DIR__ . '/../Controller/AdminController.php';
 session_start();
 $adm = new AdminController();
 if ($adm->isLogado($_SESSION["assinante"]) ){
-  $controller = new EditarAssinanteController();
+  $controller = new EditarImagemController();
     $controller->onEditar();
   $assinante = $controller->getDados();
 
@@ -30,46 +30,26 @@ if ($adm->isLogado($_SESSION["assinante"]) ){
         <div class="card-body text-muted m-3">
           <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="col-12" id="formulario">
             <div class="form-group">
+              <a class="fas fa-arrow-left" href="admin.php"></a>
             </div>
             <div class="form-group mb-5">
-              <p class="h4 text-center py-4">Editar assinante <?=$assinante->nome ?></h3>
+              <p class="h4 text-center py-4">Editar notícia <?=$assinante->nome ?></h3>
               </div>
 
               <div class="form-group">
-                <label for="exampleFormControlInput1">CPF</label>
+                <label for="exampleFormControlInput1">Id</label>
                 <input name="cpf" class="form-control disabled" value="<?=$assinante->cpf ?>">
               </div>
 
               <div class="form-group">
-                <label for="exampleFormControlInput1">Permissão</label>
+                <label for="exampleFormControlInput1">Resumo</label>
                 <input name="permissao" type="number" class="form-control" value="<?=$assinante->permissao ?>">
               </div>
 
               <div class="form-group">
-                <label for="exampleFormControlInput1">Nome</label>
+                <label for="exampleFormControlInput1">Destaque</label>
                 <input name="nome" class="form-control" value="<?=$assinante->nome ?>">
               </div>
-
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Email</label>
-                <input name="email" class="form-control disabled" value="<?=$assinante->email ?>">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Endereço</label>
-                <input name="endereco" class="form-control" value="<?=$assinante->endereco ?>">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Cidade</label>
-                <input name="cidade" class="form-control" value="<?=$assinante->cidade ?>">
-              </div>
-
-              <div class="form-group">
-                <label for="exampleFormControlInput1">Uf</label>
-                <input name="uf" class="form-control" value="<?=$assinante->uf ?>">
-              </div>
-
               <div class="text-center mt-4">
                 <button type="submit" class="btn btn-lg btn-primary" name="btneditar">Editar</button>
               </div>

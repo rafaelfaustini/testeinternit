@@ -63,8 +63,10 @@ public function getNoticias($dados){
     foreach ($lista as $noticia) {
       echo "<tr>
             <td>$noticia->id</td>
+            <td>$noticia->titulo</td>
             <td>$noticia->data</td>
             <td >$noticia->resumo</td>
+            <td>$noticia->conteudo</td>
             <td>$noticia->destaque</td>
 
 <td><a href='editar.php?nome=assinante&id=$noticia->id'  class='text-warning'>

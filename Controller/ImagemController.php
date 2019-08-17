@@ -2,20 +2,20 @@
 class ImagemController
 {
   private $conexao;
-  private $banco
+  private $banco;
 
-  function ImagemController(){
+  public function ImagemController(){
     $this->conexao = new Conexao();
     $this->banco = $this->conexao->getBanco();
   }
 
   public function adicionar($Imagem){
-    $query = $this->banco-prepare(
+    $query = $this->banco->prepare(
       "INSERT INTO Imagem (noticiaID, caminho)
       VALUES (:noticiaid, :caminho);" );
 
       $query->execute(array(
-        ':boticiaid' => $Imagem->noticia->id,
+        ':noticiaid' => $Imagem->noticia,
         ':caminho' => $Imagem->caminho
       ));
     }
@@ -46,13 +46,12 @@ class ImagemController
 
     public function listar($Imagem){
       $query = $this->banco->prepare("SELECT * FROM Imagem WHERE noticiaID=:id");
-
       $query->execute(array(
         ':id' => $noticia->id
       ));
 
       $lista = array();
-      while ($registro = $query->fetch()){$id, $noticia, $caminho
+      while ($registro = $query->fetch()){
         $Imagem = new Imagem($registro['id'], $registro['noticia'],
         $registro['caminho']);
         array_push($lista, $Imagem);

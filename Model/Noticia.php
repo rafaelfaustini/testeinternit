@@ -1,15 +1,20 @@
 <?php
+
 class Noticia{
   private $id;
+  private $titulo;
   private $data;
   private $resumo;
+  private $conteudo;
   private $destaque;
 
-  function Noticia($id, $data, $resumo, $destaque)
+  function Noticia($id, $titulo, $data, $resumo, $conteudo, $destaque)
 {
     $this->id = $id;
+    $this->titulo = $titulo;
     $this->data = $data;
     $this->resumo = $resumo;
+    $this->conteudo = $conteudo;
     $this->destaque = $destaque;
 }
 

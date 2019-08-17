@@ -11,15 +11,18 @@ class NoticiaController
   }
 
   public function adicionar($noticia){
-    $query = $this->banco-prepare(
-      "INSERT INTO noticia (data, resumo, destaque)
-      VALUES (:data, :resumo, :destaque);" );
+    $query = $this->banco->prepare(
+      "INSERT INTO noticia (titulo, data, resumo, conteudo, destaque)
+      VALUES (:titulo ,:data, :resumo, :conteudo, :destaque);" );
 
       $query->execute(array(
+        ':titulo' => $noticia->titulo,
         ':data' => $noticia->data,
         ':resumo' => $noticia->resumo,
-        ':destaque' => $noticia->destaque,
+        ':conteudo' => $noticia->conteudo,
+        ':destaque' => $noticia->destaque
       ));
+      return $this->banco->lastInsertId();
     }
 
     public function editar($noticia){
@@ -50,11 +53,10 @@ class NoticiaController
       $query = $this->banco->prepare("SELECT * FROM noticia");
 
       $query->execute();
-
       $lista = array();
       while ($registro = $query->fetch()){
-        $noticia = new Noticia($registro['id'], $registro['data'],
-        $registro['resumo'], $registro['destaque']);
+        $noticia = new Noticia($registro['id'], $registro['titulo'], $registro['data'],
+        $registro['resumo'], $registro['conteudo'], $registro['destaque']);
         array_push($lista, $noticia);
       }
       return $lista;

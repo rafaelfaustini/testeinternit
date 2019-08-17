@@ -23,7 +23,44 @@ require __DIR__ . '/../Controller/AdminController.php';
   </head>
 
   <body>
+    <!--Navbar -->
+<nav class="mb-1 navbar navbar-expand-lg navbar-dark default-color">
+  <a class="navbar-brand" href="#">Área Restrita</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
+    aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Início
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="index.php">Notícias</a>
+      </li>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto nav-flex-icons">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-default"
+          aria-labelledby="navbarDropdownMenuLink-333">
+          <a class="dropdown-item" href="logout.php">Sair</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+<!--/.Navbar -->
   <div class="container h-100">
+
+
+
     <div class="table-responsive text-nowrap">
     <table id="tableAssinantes" class="table table-striped ">
       <p class="display-4 text-center mt-1">Assinantes</p>
@@ -49,12 +86,14 @@ require __DIR__ . '/../Controller/AdminController.php';
     <div class="table-responsive text-nowrap">
     <table id="tableNoticias" class="table table-striped">
             <p class="display-4 text-center mt-1">Noticias</p>
-      <button class="btn btn-primary">Criar notícia</button>
+      <a href="adicionarNoticia.php" class="btn btn-primary">Criar notícia</a>
       <thead>
-  <tr>
+  <tr> 
     <th scope="col">Id</th>
+    <th scope="col">Título</th>
     <th scope="col">Data</th>
     <th scope="col">Resumo</th>
+    <th scope="col">Conteúdo</th>
     <th scope="col">Destaque</th>
   </tr>
 </thead>
