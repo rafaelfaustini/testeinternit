@@ -11,7 +11,7 @@ class ImagemController
 
   public function adicionar($Imagem){
     $query = $this->banco->prepare(
-      "INSERT INTO Imagem (noticiaID, caminho)
+      "INSERT INTO imagem (noticiaID, caminho)
       VALUES (:noticiaid, :caminho);" );
 
       $query->execute(array(
@@ -22,7 +22,7 @@ class ImagemController
 
     public function editar($Imagem){
       $query = $this->banco->prepare(
-        "UPDATE Imagem
+        "UPDATE imagem
         SET noticia = :noticia, caminho= :caminho
         WHERE id = :id"
       );
@@ -35,7 +35,7 @@ class ImagemController
 
     public function remover($Imagem){
       $query = $this->banco->prepare(
-        "DELETE FROM Imagem WHERE id=:id"
+        "DELETE FROM imagem WHERE id=:id"
       );
 
       $query->execute(array(
@@ -45,7 +45,7 @@ class ImagemController
 
     public function removerImagensNoticia($id){
       $query = $this->banco->prepare(
-        "SELECT caminho FROM Imagem WHERE noticiaID=:id"
+        "SELECT caminho FROM imagem WHERE noticiaID=:id"
       );
       $query->execute(array(
         ':id' => $id
@@ -57,7 +57,7 @@ class ImagemController
 
 
       $query = $this->banco->prepare(
-        "DELETE FROM Imagem WHERE noticiaID=:id"
+        "DELETE FROM imagem WHERE noticiaID=:id"
       );
 
       $query->execute(array(
@@ -67,7 +67,7 @@ class ImagemController
     }
 
     public function listar($Imagem){
-      $query = $this->banco->prepare("SELECT * FROM Imagem WHERE noticiaID=:id");
+      $query = $this->banco->prepare("SELECT * FROM imagem WHERE noticiaID=:id");
       $query->execute(array(
         ':id' => $noticia->id
       ));
