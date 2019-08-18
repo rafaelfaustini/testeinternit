@@ -30,7 +30,6 @@ class EditarAssinanteController{
   }
 
   public function onEditar(){
-
     if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['btneditar'])
     && isset($_POST['cpf']) &&  isset($_POST['nome']) && isset($_POST['cpf'])
     && isset($_POST['permissao']) && isset($_POST['email']) && isset($_POST['endereco'])

@@ -10,6 +10,7 @@ class NoticiaController
     $this->banco = $this->conexao->getBanco();
   }
 
+
   public function adicionar($noticia){
     $query = $this->banco->prepare(
       "INSERT INTO noticia (titulo, data, resumo, conteudo, destaque)
@@ -40,7 +41,7 @@ class NoticiaController
         ':resumo' => $noticia->resumo,
         ':conteudo' => $noticia->conteudo,
         ':destaque' => $noticia->destaque
-        
+
       ));
     }
 
@@ -66,6 +67,21 @@ class NoticiaController
       }
       return $lista;
     }
+
+    public function get($id){
+      $query = $this->banco->prepare("SELECT * FROM noticia where id=:id");
+        $query->execute(array(
+          ':id' => $id
+        ));
+      $query->execute();
+      $noticia = null;
+      while ($registro = $query->fetch()){
+        $noticia = new Noticia($registro['id'], $registro['titulo'], $registro['data'],
+        $registro['resumo'], $registro['conteudo'], $registro['destaque']);
+      }
+      return $noticia;
+    }
+
   }
 
   ?>

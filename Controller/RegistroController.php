@@ -11,6 +11,15 @@ class RegistroController{
     $this->banco = $this->conexao->getBanco();
   }
 
+  private function limpaCPF($valor){
+ $valor = trim($valor);
+ $valor = str_replace(".", "", $valor);
+ $valor = str_replace(",", "", $valor);
+ $valor = str_replace("-", "", $valor);
+ $valor = str_replace("/", "", $valor);
+ return $valor;
+}
+
   private function isDuplicado($cpf,$email){
     $query = $this->banco->prepare("select * from assinante where cpf=:cpf or email=:email");
 
@@ -45,7 +54,8 @@ if(!$this->isDuplicado($_POST["cpf"],$_POST["nome"])){ // Se não houver emails 
   if($_POST["senha"] == $_POST["csenha"]){ // Confirmação Válida
     $hash = $this->hashear($_POST["senha"]);
   //  $cpf, $permissao, $nome, $email, $senha, $endereco, $cidade, $uf
-    $assinante = new Assinante($_POST["cpf"], 0 ,$_POST["nome"],$_POST["email"], $hash ,$_POST["end"], $_POST["cidade"], $_POST["uf"]);
+    $cpf = $this->limpaCPF($_POST["cpf"]);
+    $assinante = new Assinante($cpf, 0 ,$_POST["nome"],$_POST["email"], $hash ,$_POST["end"], $_POST["cidade"], $_POST["uf"]);
     $controller = new AssinanteController();
     $controller->adicionar($assinante);
     $parent = dirname(dirname($_SERVER['REQUEST_URI']));

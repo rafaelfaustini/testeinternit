@@ -44,15 +44,13 @@ require __DIR__ . '/../Controller/AdminController.php';
     </ul>
     <ul class="navbar-nav ml-auto nav-flex-icons">
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user"></i>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right dropdown-default"
-          aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" href="logout.php">Sair</a>
-        </div>
-      </li>
+       <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <i class="fas fa-user"></i> <?=$_SESSION["assinante"]->nome; ?> </a>
+       <div class="dropdown-menu dropdown-menu-right dropdown-info" aria-labelledby="navbarDropdownMenuLink-4">
+         <a class="dropdown-item waves-effect waves-light" href="dados.php">Meus Dados</a>
+         <a class="dropdown-item waves-effect waves-light" href="logout.php">Sair</a>
+       </div>
+     </li>
     </ul>
   </div>
 </nav>
@@ -88,7 +86,7 @@ require __DIR__ . '/../Controller/AdminController.php';
             <p class="display-4 text-center mt-1">Noticias</p>
       <a href="adicionarNoticia.php" class="btn btn-primary">Criar notícia</a>
       <thead>
-  <tr> 
+  <tr>
     <th scope="col">Id</th>
     <th scope="col">Título</th>
     <th scope="col">Data</th>

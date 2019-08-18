@@ -13,7 +13,72 @@ class PainelController{
 
   }
 
+  public function ver($noticia){
 
+    echo "<h1 class='mt-5'><b>$noticia->titulo</b></h1>";
+    echo "<h3>$noticia->resumo</h3>";
+    echo "<h6>".date('d/m/Y', $noticia->data)."</h6>";
+
+    $imagens = $this->listarImagens($noticia->id);
+    if($imagens!= NULL){
+      $tamanho = sizeof($imagens);
+    echo
+    "
+    <div id='carousel-example-1z' class='card-img-top carousel slide carousel-fade my-5' data-ride='carousel>
+          <!--Indicators-->
+          <ol class='carousel-indicators'>";
+        for($i=0;$i<$tamanho;$i++){
+            if(!$i){
+              echo "<li data-target='#carousel-example-1z' data-slide-to='$i' class='active'></li>";
+            } else {
+            echo "<li data-target='#carousel-example-1z' data-slide-to='$i'></li>";
+          }
+
+        }
+
+      echo "</ol>
+          <!--/.Indicators-->
+          <!--Slides-->
+          <div class='carousel-inner' role='listbox'>";
+
+    $contador = 0;
+    foreach($imagens as $imagem){
+      if(!$contador){
+        echo "
+        <div class='carousel-item active'>
+          <img class='d-block w-100' src='..$imagem->caminho'
+            alt='' style='width: 100%;height: 20vw;object-fit: cover;'>
+        </div>";
+      } else{
+    echo "
+    <div class='carousel-item'>
+    <img class='d-block w-100' src='..$imagem->caminho'
+      alt='' style='width: 100%;height: 20vw;object-fit: cover;'>
+    </div>";
+    }
+    $contador++;
+    }
+
+
+    echo "
+        </div>
+        <!--/.Slides-->
+        <!--Controls-->
+        <a class='carousel-control-prev' href='#carousel-example-1z' role='button' data-slide='prev'>
+          <span class='carousel-control-prev-icon' aria-hidden='true'></span>
+          <span class='sr-only'>Previous</span>
+        </a>
+        <a class='carousel-control-next' href='#carousel-example-1z' role='button' data-slide='next'>
+          <span class='carousel-control-next-icon' aria-hidden='true'></span>
+          <span class='sr-only'>Next</span>
+        </a>
+        <!--/.Controls-->
+      </div>
+";
+    }
+        echo "<p style='font-size: 1.25rem;line-height: 2rem;margin-bottom: 2rem;'>$noticia->conteudo</p>";
+
+  }
 
   private function listarDestaques(){
     $query = $this->banco->prepare("SELECT * FROM noticia where destaque=1 LIMIT 3");
@@ -29,8 +94,11 @@ class PainelController{
   }
 
 private function listarImagens($id){
-  $query = $this->banco->prepare("SELECT * FROM imagem where noticiaID=$id");
-  $query->execute();
+  $query = $this->banco->prepare("SELECT * FROM imagem where noticiaID=:id");
+
+  $query->execute(array(
+    ':id' => $id
+  ));
 
   $lista = array();
   while ($registro = $query->fetch()){
@@ -48,6 +116,7 @@ private function listarImagens($id){
 
       if(sizeof($lista) != 0){
         foreach ($lista as $noticia){
+          echo "<form action='' method='POST'>";
           echo "<div class='row justify-content-center'>";
           $this->cardNoticia($noticia);
           echo "</div>";
@@ -58,12 +127,14 @@ private function listarImagens($id){
     } else{
       $lista = $this->listarDestaques();
       if(sizeof($lista) != 0){
+        echo "<form action='' method='POST'>";
       echo "<div class='card-deck'>";
         foreach ($lista as $noticia){
           $this->cardNoticia($noticia);
       }
       echo "</div>";
-    echo "<form action='' method='POST'><div class='col d-flex justify-content-center'><button class='btn btn-secondary' name='btnvermais'>Veja mais notícias</button></div></form>";
+    echo "<center><button class='btn btn-secondary' name='btnvermais' type='submit'>Veja mais notícias</button></div></center>";
+          echo "</form>";
   } else {
     echo "<p class='text-center m-5'>Não há notícias disponíveis no momento</p>";
   }
@@ -136,7 +207,7 @@ echo "
         <h4 class='card-title'>$noticia->titulo</h5>
         <h7 class='card-subtitle mb-2 text-muted'>".date('d/m/Y', $noticia->data)."</h7>
         <p class='card-text'>$noticia->resumo</p>
-        <button class='btn btn-primary'>Saiba Mais</button>
+        <a href='noticia.php?id=$noticia->id' class='btn btn-primary'>Saiba Mais</a>
       </div>
     </div>
 
@@ -205,7 +276,7 @@ echo "
       <div class='card-body'>
         <h5 class='card-title'>$noticia->data</h5>
         <p class='card-text'>$noticia->resumo</p>
-        <button class='btn btn-primary'>Saiba Mais</button>
+        <a class='btn btn-primary' href='noticia.php?id=$noticia->id'>Saiba Mais</a>
       </div>
     </div>
     ";

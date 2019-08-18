@@ -11,6 +11,19 @@ class AssinanteController
     $this->banco = $this->conexao->getBanco();
   }
 
+  public function atualizarSenha($cpf,$hash){
+    $query = $this->banco->prepare(
+      "UPDATE assinante
+      SET senha = :senha
+      WHERE cpf = :cpf"
+    );
+
+    $query->execute(array(
+      ':senha' => $hash,
+      ':cpf' => $cpf
+    ));
+  }
+
   public function adicionar($assinante){
     $query = $this->banco->prepare(
       "INSERT INTO assinante (cpf, permissao, nome, email,senha, endereco, cidade, uf)
