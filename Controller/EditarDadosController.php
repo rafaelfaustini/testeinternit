@@ -17,11 +17,11 @@ class EditarDadosController{
 
     public function onEditar(){
           if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['btnatualizar'])
-          && isset($_POST['cpf']) &&  isset($_POST['nome']) &&
-          isset($_POST['permissao']) && isset($_POST['email']) && isset($_POST['endereco'])
+          && isset($_POST['cpf']) &&  isset($_POST['nome'])
+           && isset($_POST['email']) && isset($_POST['endereco'])
           && isset($_POST['cidade']) && isset($_POST['uf'])){
 
-       $assinanteNovo = new Assinante($_POST['cpf'],$_POST['permissao'],$_POST['nome'],$_POST['email'],
+       $assinanteNovo = new Assinante($_POST['cpf'],$_SESSION["assinante"]->permissao,$_POST['nome'],$_POST['email'],
        "",$_POST['endereco'],$_POST['cidade'],$_POST['uf']);
 
        require_once __DIR__ . '/../Controller/AssinanteController.php';

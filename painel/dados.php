@@ -41,11 +41,6 @@ if ($adm->isLogado($_SESSION["assinante"]) ){
               </div>
 
               <div class="form-group">
-                <label for="exampleFormControlInput1">Permissão</label>
-                <input name="permissao" type="number" class="form-control" value="<?=$assinante->permissao ?>">
-              </div>
-
-              <div class="form-group">
                 <label for="exampleFormControlInput1">Nome</label>
                 <input name="nome" class="form-control" value="<?=$assinante->nome ?>">
               </div>
