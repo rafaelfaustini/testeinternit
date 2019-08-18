@@ -1,15 +1,7 @@
 <?php
-require __DIR__ . '/../Model/Assinante.php';
-require __DIR__ . '/../Controller/PainelController.php';
-  session_start();
-  $painel = new PainelController();
-  if(!isset($_SESSION["assinante"])){
-    $parent = dirname(dirname($_SERVER['REQUEST_URI']));
-    header("Location: $parent/acesso.php");
-    exit;
-  }
-  require_once __DIR__ . '/../Controller/AdminController.php';
-  $admin = new AdminController();
+
+
+
  ?>
  <html>
    <head>

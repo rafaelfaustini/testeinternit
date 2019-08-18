@@ -4,6 +4,13 @@ require_once 'AssinanteController.php';
 
 class AdminController{
 
+public function checkAdmin($dados){
+  if($dados->permissao){
+    return true;
+  } else {
+    return false;
+  }
+}
 
 public function isLogado($dados){
   if(!empty($dados)){

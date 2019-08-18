@@ -35,7 +35,7 @@ class AdicionarNoticiaController{
         $movido = move_uploaded_file($tmp_name, $diretorio);
         if($movido){
           $controllerImagem = new ImagemController();
-          $imagem = new Imagem(null, $id, $diretorio);
+          $imagem = new Imagem(null, $id, "\img\\$name.$extensao");
           $controllerImagem->adicionar($imagem);
         }
     }

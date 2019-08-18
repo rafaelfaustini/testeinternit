@@ -52,7 +52,7 @@ class ImagemController
       ));
 
       while ($registro = $query->fetch()){
-        unlink($registro['caminho']);
+        unlink(realpath(dirname(dirname(__FILE__))).$registro['caminho']);
       }
 
 
