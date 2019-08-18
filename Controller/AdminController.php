@@ -64,17 +64,17 @@ public function getNoticias($dados){
       echo "<tr>
             <td>$noticia->id</td>
             <td>$noticia->titulo</td>
-            <td>$noticia->data</td>
+            <td>".date('d/m/Y', $noticia->data)."</td>
             <td >$noticia->resumo</td>
             <td>$noticia->conteudo</td>
             <td>$noticia->destaque</td>
 
-<td><a href='editar.php?nome=assinante&id=$noticia->id'  class='text-warning'>
+<td><a href='editarNoticia.php?id=$noticia->id'  class='text-warning'>
  <i class='warning-text fa fa-lg fa-edit' data-toggle='tooltip' data-placement='top' title='Editar Notícia'></i
    ></a></td>
 
 
-  <td> <a href='operacao.php?assinante=1&deletar=".$noticia->id."' class='text-danger' onClick='confirm(\"Tem certeza que deseja remover ?\");'>
+  <td> <a href='operacao.php?noticia=1&deletar=".$noticia->id."' class='text-danger' onClick='confirm(\"Tem certeza que deseja remover ?\");'>
      <i class='fa fa-lg fa-minus-circle' data-toggle='tooltip' data-placement='top' title='Remover Notícia'></i></a>
 </td>
 

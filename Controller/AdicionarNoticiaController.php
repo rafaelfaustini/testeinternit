@@ -35,14 +35,14 @@ class AdicionarNoticiaController{
         $movido = move_uploaded_file($tmp_name, $diretorio);
         if($movido){
           $controllerImagem = new ImagemController();
-          $imagem = new Imagem(null, $id, "$diretorio/$name.$extensao");
+          $imagem = new Imagem(null, $id, $diretorio);
           $controllerImagem->adicionar($imagem);
         }
     }
 }
 
-//header("Location: admin.php");
-//exit;
+header("Location: admin.php");
+exit;
 
 
     }

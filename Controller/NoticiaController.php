@@ -28,14 +28,19 @@ class NoticiaController
     public function editar($noticia){
       $query = $this->banco->prepare(
         "UPDATE noticia
-        SET data = :data, resumo= :resumo, destaque= :destaque
+        SET titulo = :titulo ,data = :data, resumo= :resumo,
+        conteudo = :conteudo, destaque= :destaque
         WHERE id = :id"
       );
 
       $query->execute(array(
+        ":id" => $noticia->id,
+        ':titulo' => $noticia->titulo,
         ':data' => $noticia->data,
         ':resumo' => $noticia->resumo,
+        ':conteudo' => $noticia->conteudo,
         ':destaque' => $noticia->destaque
+        
       ));
     }
 

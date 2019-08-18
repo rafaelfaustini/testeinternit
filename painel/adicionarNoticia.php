@@ -40,8 +40,8 @@ if ($adm->isLogado($_SESSION["assinante"]) ){
               </div>
               <div class="form-group">
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-                    <label class="custom-control-label" for="defaultUnchecked" name="destaque">Destaque</label>
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked" name="destaque">
+                    <label class="custom-control-label" for="defaultUnchecked" >Destaque</label>
                 </div>
               </div>
 
@@ -74,3 +74,5 @@ if ($adm->isLogado($_SESSION["assinante"]) ){
         </form>
       </div>
     </div>
+  </body>
+  </html>

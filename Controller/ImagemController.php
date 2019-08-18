@@ -26,7 +26,6 @@ class ImagemController
         SET noticia = :noticia, caminho= :caminho
         WHERE id = :id"
       );
-
       $query->execute(array(
         ':id' => $Imagem->id,
         ':noticia' => $Imagem->noticia,
@@ -42,6 +41,29 @@ class ImagemController
       $query->execute(array(
         ':id' => $Imagem->id
       ));
+    }
+
+    public function removerImagensNoticia($id){
+      $query = $this->banco->prepare(
+        "SELECT caminho FROM Imagem WHERE noticiaID=:id"
+      );
+      $query->execute(array(
+        ':id' => $id
+      ));
+
+      while ($registro = $query->fetch()){
+        unlink($registro['caminho']);
+      }
+
+
+      $query = $this->banco->prepare(
+        "DELETE FROM Imagem WHERE noticiaID=:id"
+      );
+
+      $query->execute(array(
+        ':id' => $id
+      ));
+
     }
 
     public function listar($Imagem){
