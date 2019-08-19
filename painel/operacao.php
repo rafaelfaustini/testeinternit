@@ -6,6 +6,7 @@ require_once __DIR__ . '/../Controller/ImagemController.php';
 
   session_start();
   $adm = new AdminController();
+  $adm->kick($_SESSION["assinante"]);
   if(!isset($_SESSION["assinante"])){
     $_SESSION["assinante"] = NULL;
   }

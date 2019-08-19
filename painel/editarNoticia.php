@@ -3,6 +3,7 @@ require_once __DIR__ . '/../Controller/EditarNoticiaController.php';
 require_once __DIR__ . '/../Controller/AdminController.php';
 session_start();
 $adm = new AdminController();
+$adm->kick($_SESSION["assinante"]);
 if ($adm->isLogado($_SESSION["assinante"]) ){
 
   $controller = new EditarNoticiaController();

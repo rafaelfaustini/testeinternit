@@ -7,6 +7,7 @@ require __DIR__ . '/../Controller/AdminController.php';
     $_SESSION["assinante"] = NULL;
   }
   $adm->isLogado($_SESSION["assinante"]);
+  $adm->kick($_SESSION["assinante"]);
 
 
  ?>

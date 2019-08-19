@@ -3,16 +3,16 @@ require_once __DIR__ . '/../Controller/EditarAssinanteController.php';
 require_once __DIR__ . '/../Controller/AdminController.php';
 session_start();
 $adm = new AdminController();
+$adm->kick($_SESSION["assinante"]);
 if ($adm->isLogado($_SESSION["assinante"]) ){
   $controller = new EditarAssinanteController();
     $controller->onEditar();
   $assinante = $controller->getDados();
-
+  $adm->kick($_SESSION["assinante"]);
 }else{
   header("Location: admin.php");
   exit;
 }
-
 
 ?>
 

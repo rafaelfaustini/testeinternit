@@ -4,6 +4,12 @@ require_once 'AssinanteController.php';
 
 class AdminController{
 
+public function kick($dados){
+    if(!$this->checkAdmin($dados)){
+    header("Location: index.php");
+    exit;
+    }
+}
 public function checkAdmin($dados){
   if($dados->permissao){
     return true;
