@@ -2,6 +2,7 @@
 require 'Controller/AcessoController.php';
 $acesso = new AcessoController();
 $acesso->autenticar();
+
  ?>
 
 <html>
@@ -22,7 +23,7 @@ $acesso->autenticar();
   <div class="form-group mb-4">
     <p class="h4 py-4 gray" style="color: #212121;">Acesso</h3>
   </div>
-
+  <?=$acesso->gerarAlertas(); ?>
   <div class="md-form form-lg">
     <i class="fa fa-envelope prefix"></i>
     <input type="text" id="email" name="email" class="form-control form-control-lg" required>
