@@ -2,7 +2,7 @@ create table assinante(
   cpf varchar(11) Primary Key,
   permissao int,
   nome varchar(100) NOT NULL,
-  email varchar(100) NOT NULL,
+  email unique varchar(100) NOT NULL,
   senha varchar(255) NOT NULL,
   endereco varchar(150) NOT NULL,
   cidade varchar(50) NOT NULL,
