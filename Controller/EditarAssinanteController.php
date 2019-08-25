@@ -14,9 +14,11 @@ class EditarAssinanteController{
   public function getDados(){
     if(isset($_GET["id"])){
       $id = $_GET["id"];
-      $query = $this->banco->prepare("SELECT * FROM assinante where cpf='$id'");
+      $query = $this->banco->prepare("SELECT * FROM assinante where cpf=:cpf");
 
-      $query->execute();
+        $query->execute(array(
+          ':cpf' => $id
+        ));
 
       while ($registro = $query->fetch()){
         $assinante = new Assinante($registro['cpf'], $registro['permissao'],
